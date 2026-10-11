@@ -1,0 +1,352 @@
+/* nav effects */
+:root {
+  --nv-glass: rgba(22, 3, 6, 0.66);
+  --nv-line: rgba(255, 255, 255, 0.16);
+  --nv-red: #ff2a2a;
+  --nv-red2: #c30911;
+  --nv-red3: #7d0409;
+}
+header.nx-dock {
+  top: 14px;
+}
+header.nx-dock .nx-logo:before {
+  display: none;
+}
+header.nx-dock .brand-image {
+  filter: drop-shadow(0 10px 18px rgba(60, 0, 0, 0.55));
+}
+
+/* kapsul menu */
+header.nx-dock .nx-nav {
+  position: relative;
+  gap: 2px;
+  padding: 6px;
+  border-radius: 999px;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(
+      160px 70px at var(--mx, 50%) var(--my, 0%),
+      rgba(255, 70, 60, 0.38),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.02) 40%,
+      rgba(0, 0, 0, 0.18)
+    ),
+    var(--nv-glass) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.6) !important;
+  backdrop-filter: blur(18px) saturate(1.6) !important;
+  border: 1px solid var(--nv-line) !important;
+  box-shadow:
+    0 22px 46px -18px rgba(70, 0, 0, 0.85),
+    0 2px 0 rgba(255, 255, 255, 0.14) inset,
+    0 -10px 20px rgba(0, 0, 0, 0.22) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.25) !important;
+  transition:
+    padding 0.4s,
+    box-shadow 0.4s,
+    background-color 0.4s;
+}
+header.nx-dock.scrolled .nx-nav {
+  background:
+    radial-gradient(
+      160px 70px at var(--mx, 50%) var(--my, 0%),
+      rgba(255, 70, 60, 0.38),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0) 40%,
+      rgba(0, 0, 0, 0.2)
+    ),
+    rgba(16, 2, 4, 0.82) !important;
+}
+header.nx-dock .nx-nav:after {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.14) 50%,
+    transparent 60%
+  );
+  animation-duration: 10s;
+}
+
+/* indikator aktif: merah menyala */
+header.nx-dock .nx-pill {
+  background: linear-gradient(
+    180deg,
+    #ff4136 0%,
+    var(--nv-red2) 55%,
+    var(--nv-red3) 100%
+  ) !important;
+  box-shadow:
+    0 10px 24px -6px rgba(255, 42, 42, 0.75),
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 -6px 10px rgba(80, 0, 0, 0.35) inset,
+    0 0 0 1px rgba(255, 150, 140, 0.35) !important;
+  transition:
+    transform 0.6s cubic-bezier(0.34, 1.45, 0.5, 1),
+    width 0.6s cubic-bezier(0.34, 1.45, 0.5, 1),
+    height 0.3s !important;
+}
+header.nx-dock .nx-pill:after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  top: 2px;
+  height: 38%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent);
+  opacity: 0.7;
+}
+
+/* tautan */
+header.nx-dock .nx-nav a,
+header.nx-dock .nx-nav a:hover,
+header.nx-dock .nx-nav a.active,
+header.nx-dock .nx-nav a.active:hover {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.72);
+  height: 44px;
+  padding: 0 20px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+header.nx-dock .nx-nav a.active,
+header.nx-dock .nx-nav a.hov {
+  color: #fff !important;
+  text-shadow: 0 1px 8px rgba(80, 0, 0, 0.55);
+}
+header.nx-dock .nx-nav.hovering a.active:not(.hov) {
+  color: rgba(255, 255, 255, 0.72) !important;
+  text-shadow: none;
+}
+@media (min-width: 901px) {
+  header.nx-dock .nx-nav a i {
+    display: grid !important;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    transition: transform 0.45s cubic-bezier(0.34, 1.8, 0.5, 1);
+  }
+  header.nx-dock .nx-nav a svg {
+    width: 17px;
+    height: 17px;
+  }
+  header.nx-dock .nx-nav a.hov i {
+    transform: translateY(-1px) scale(1.18) rotate(-8deg);
+  }
+  header.nx-dock.scrolled .nx-nav a {
+    height: 38px;
+    padding: 0 16px;
+  }
+  header.nx-dock.scrolled .nx-nav a i {
+    display: none !important;
+  }
+}
+@media (min-width: 901px) and (max-width: 1180px) {
+  header.nx-dock .nx-nav a i {
+    display: none !important;
+  }
+  header.nx-dock .nx-nav a,
+  header.nx-dock.scrolled .nx-nav a {
+    padding: 0 15px;
+    font-size: 0.72rem;
+  }
+}
+
+/* bar progres scroll di dasar kapsul */
+.nx-prog {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.nx-prog:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  transform: scaleX(var(--np, 0));
+  background: linear-gradient(90deg, #ff4136, #ffb199);
+  box-shadow: 0 0 10px #ff4136;
+}
+
+/* keranjang */
+header.nx-dock .nx-cart {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0)), var(--nv-glass) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.5) !important;
+  backdrop-filter: blur(16px) saturate(1.5) !important;
+  border: 1px solid var(--nv-line) !important;
+  box-shadow:
+    0 14px 28px -12px rgba(70, 0, 0, 0.85),
+    0 1px 0 rgba(255, 255, 255, 0.2) inset !important;
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.6, 0.5, 1),
+    border-color 0.3s;
+}
+header.nx-dock .nx-cart:hover {
+  transform: translateY(-2px) scale(1.07) rotate(-6deg);
+  border-color: rgba(255, 140, 128, 0.7) !important;
+}
+header.nx-dock .nx-cart em {
+  background: linear-gradient(180deg, #ff4136, #c30911) !important;
+  color: #fff !important;
+  border: 2px solid #fff;
+  top: -5px;
+  right: -5px;
+  min-width: 23px;
+  height: 23px;
+  box-shadow: 0 4px 10px rgba(120, 0, 0, 0.5);
+}
+
+/* tombol Pesan */
+header.nx-dock .nx-wa {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  height: 50px;
+  padding: 0 7px 0 22px;
+  gap: 12px;
+  font-size: 0.82rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #fff 0%, #ffe9e5 100%) !important;
+  color: #7d0409 !important;
+  box-shadow:
+    0 16px 30px -12px rgba(70, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.7),
+    0 -3px 8px rgba(195, 9, 17, 0.14) inset !important;
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.5, 0.5, 1),
+    box-shadow 0.3s,
+    color 0.3s;
+}
+header.nx-dock .nx-wa:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.9) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  animation: nvSheen 5.5s 2s ease-in-out infinite;
+}
+@keyframes nvSheen {
+  0%,
+  70% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+header.nx-dock .nx-wa i {
+  width: 36px;
+  height: 36px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  background: linear-gradient(180deg, #ff4136, #a9080f) !important;
+  color: #fff !important;
+  box-shadow:
+    0 6px 12px -4px rgba(150, 0, 0, 0.7),
+    0 1px 0 rgba(255, 255, 255, 0.4) inset;
+  transition: transform 0.45s cubic-bezier(0.34, 1.6, 0.5, 1);
+}
+header.nx-dock .nx-wa:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #ff4136, #a9080f) !important;
+  color: #fff !important;
+  box-shadow:
+    0 20px 34px -12px rgba(255, 42, 42, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.5) !important;
+}
+header.nx-dock .nx-wa:hover i {
+  background: #fff !important;
+  color: #c30911 !important;
+  transform: rotate(-45deg) scale(1.05);
+}
+header.nx-dock .nx-wa:active {
+  transform: scale(0.97);
+}
+
+/* HP: bar bawah kaca gelap */
+@media (max-width: 900px) {
+  header.nx-dock .nx-nav {
+    position: fixed !important;
+    left: max(12px, env(safe-area-inset-left)) !important;
+    right: max(12px, env(safe-area-inset-right)) !important;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    max-width: 520px;
+    margin-inline: auto;
+    border-radius: 28px !important;
+    padding: 6px !important;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 45%),
+      rgba(18, 2, 5, 0.84) !important;
+  }
+  header.nx-dock .nx-nav a,
+  header.nx-dock .nx-nav a:hover,
+  header.nx-dock .nx-nav a.active,
+  header.nx-dock .nx-nav a.active:hover {
+    flex: 1;
+    flex-direction: column;
+    gap: 3px;
+    height: 56px !important;
+    padding: 0 2px !important;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    border-radius: 22px;
+  }
+  header.nx-dock .nx-nav a i {
+    display: grid !important;
+    place-items: center;
+  }
+  header.nx-dock .nx-nav a svg {
+    width: 21px;
+    height: 21px;
+  }
+  header.nx-dock .nx-nav a.hov i {
+    transform: translateY(-1px) scale(1.12);
+  }
+  header.nx-dock .nx-pill {
+    border-radius: 22px;
+  }
+  .nx-prog {
+    left: 26px;
+    right: 26px;
+    bottom: 2px;
+  }
+  header.nx-dock .nx-cart {
+    width: 46px;
+    height: 46px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  header.nx-dock .nx-wa:before {
+    animation: none;
+  }
+}

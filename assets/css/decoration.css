@@ -1,0 +1,31 @@
+/* decoration */
+/* hero: cincin putar di belakang piring, elips tipis, garis lingkaran di latar krem & hitam */
+.hero-spin,
+.hero-spin.rev,
+.hero-orbit,
+.orbit-two {
+  display: none !important;
+}
+.hb-cream:before,
+.hb-dark:before {
+  display: none !important;
+}
+.fresh-stamp {
+  border-color: transparent !important;
+}
+/* Lihat Menu, Promo Jumat, Pemilik, CTA, Kontak, Tentang */
+.lm-rg,
+.pj-ring,
+.ow2-ring,
+.cta2-ring,
+.kt-orb.a,
+.ab-orbit {
+  display: none !important;
+}
+/* gambar latar bercincin (ring-bg) di bagian merah: jadi merah polos */
+.lm:before,
+.nx-crimson:before,
+.cta-section:before {
+  background: none !important;
+  animation: none !important;
+}
