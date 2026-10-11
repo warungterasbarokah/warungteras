@@ -1,0 +1,150 @@
+/* Tata letak video menu */
+.lm-clip {
+  position: absolute;
+  z-index: 2;
+  left: -14%;
+  right: -14%;
+  top: 50%;
+  aspect-ratio: 16/9;
+  overflow: visible;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.94);
+  transition:
+    opacity 0.6s ease,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear 1s;
+  will-change: transform, opacity;
+  /* lebur semua tepi ke latar */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0, #000 20%, #000 80%, transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0, #000 20%, #000 80%, transparent 100%),
+    linear-gradient(180deg, transparent 0, #000 22%, #000 78%, transparent 100%);
+  mask-composite: intersect;
+}
+.lm-plate.is-video .lm-clip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) scale(1);
+  transition-delay: 0s;
+}
+.lm-vid {
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: transparent;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  opacity: 0 !important;
+  transition: opacity 0.55s ease;
+  /* samakan rona latar video (merah agak pink/gelap) dengan merah website #c30911 */
+  filter: hue-rotate(var(--vh, -3deg)) saturate(var(--vs, 1.18)) brightness(var(--vb, 0.96))
+    contrast(1.02);
+}
+.lm-vid.on {
+  opacity: 1 !important;
+}
+.lm-vid[data-k="tiaw"] {
+  --vh: 4deg;
+  --vs: 1.25;
+  --vb: 0.98;
+}
+.lm-vid[data-k="seblak"] {
+  --vh: 0deg;
+  --vs: 1.15;
+  --vb: 0.97;
+}
+/* v14: video baru — nasi goreng, tela-tela (kentang), burger, kebab. Latar video disamakan ke merah website. */
+.lm-vid[data-k="nasgor"] {
+  --vh: -2deg;
+  --vs: 1.12;
+  --vb: 0.98;
+}
+.lm-vid[data-k="kentang"] {
+  --vh: 2deg;
+  --vs: 1.2;
+  --vb: 1.04;
+}
+.lm-vid[data-k="burger"] {
+  --vh: -1deg;
+  --vs: 1.12;
+  --vb: 0.98;
+}
+.lm-vid[data-k="kebab"] {
+  --vh: -1deg;
+  --vs: 1.12;
+  --vb: 0.98;
+}
+.lm-vid[data-k="ifumie"] {
+  --vh: -3deg;
+  --vs: 1.12;
+  --vb: 0.95;
+}
+.lm-vid::-webkit-media-controls,
+.lm-vid::-webkit-media-controls-start-playback-button,
+.lm-vid::-webkit-media-controls-panel {
+  display: none !important;
+  -webkit-appearance: none;
+}
+/* foto bulat & bayangan piring menyingkir saat mode video */
+.lm-disc {
+  transition:
+    transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.4s ease;
+}
+.lm-plate:before,
+.lm-plate:after {
+  transition: opacity 0.5s ease;
+}
+.lm-plate.is-video .lm-disc {
+  opacity: 0;
+  pointer-events: none;
+}
+.lm-plate.is-video:before {
+  opacity: 0;
+}
+.lm-plate.is-video:after {
+  opacity: 0;
+}
+.lm-cap {
+  z-index: 3;
+}
+.lm-plate.is-video .lm-cap {
+  bottom: -2%;
+}
+@media (max-width: 900px) {
+  .lm-plate {
+    width: min(560px, 100%);
+  }
+}
+@media (max-width: 520px) {
+  .lm-plate {
+    width: 100%;
+  }
+  .lm-clip {
+    left: -8%;
+    right: -8%;
+  }
+  .lm-plate.is-video .lm-cap {
+    bottom: 0;
+    padding: 8px 12px;
+    font-size: 0.72rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lm-clip {
+    transition: opacity 0.2s linear;
+  }
+}

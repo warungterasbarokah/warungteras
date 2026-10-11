@@ -1,0 +1,640 @@
+/* about */
+#tentang {
+  --a-red: #c30911;
+  --a-red2: #e0121b;
+  --a-deep: #6a0710;
+  --a-ink: #1d0a0b;
+  --a-mut: #6e5553;
+  --a-line: #f1dcd8;
+  --a-cream: #fff6ee;
+  --a-e: cubic-bezier(0.16, 1, 0.3, 1);
+}
+#tentang.nx-light {
+  background: linear-gradient(180deg, #fff 0, #fff7f3 100%) !important;
+}
+#tentang:before {
+  display: none !important;
+}
+.ab {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(32px, 6vw, 92px);
+  align-items: center;
+}
+.ab svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Kiri: kartu + piring ---------- */
+.ab-vis {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  perspective: 1200px;
+  --rx: 0deg;
+  --ry: 0deg;
+}
+.ab-main {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  aspect-ratio: 1/0.94;
+  border-radius: 40px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(110% 90% at 20% 0, var(--a-red2), #b00812 55%, var(--a-deep));
+  box-shadow: 0 50px 70px -42px rgba(160, 10, 20, 0.85);
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.6s var(--a-e);
+  will-change: transform;
+}
+.ab-main:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1.2px, transparent 1.5px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(70% 70% at 50% 45%, #000, transparent);
+  mask-image: radial-gradient(70% 70% at 50% 45%, #000, transparent);
+}
+.ab-glow {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 46%;
+  width: 90%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 200, 120, 0.45), transparent 70%);
+  animation: abGlow 4.5s ease-in-out infinite alternate paused;
+}
+.ab.live .ab-glow {
+  animation-play-state: running;
+}
+@keyframes abGlow {
+  to {
+    transform: scale(1.12);
+    opacity: 0.7;
+  }
+}
+.ab-orbit {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 80%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  animation: abSpin 60s linear infinite paused;
+}
+.ab-orbit:after {
+  content: "";
+  position: absolute;
+  inset: -26px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+}
+.ab-orbit i {
+  position: absolute;
+  left: 50%;
+  top: -7px;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: #ffd45c;
+  box-shadow: 0 0 0 6px rgba(255, 212, 92, 0.25);
+}
+.ab.live .ab-orbit {
+  animation-play-state: running;
+}
+@keyframes abSpin {
+  to {
+    rotate: 360deg;
+  }
+}
+.ab-logo {
+  position: relative;
+  width: 62%;
+  aspect-ratio: 1;
+  margin-top: -6%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--a-cream);
+  box-shadow:
+    0 30px 50px -22px rgba(60, 0, 0, 0.75),
+    inset 0 0 0 6px rgba(195, 9, 17, 0.08);
+  animation: abFloat 6s ease-in-out infinite paused;
+}
+.ab.live .ab-logo {
+  animation-play-state: running;
+}
+@keyframes abFloat {
+  50% {
+    translate: 0 -10px;
+  }
+}
+.ab-logo img {
+  width: 92%;
+  height: auto;
+  max-height: 92%;
+  object-fit: contain;
+}
+.ab-stamp {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: clamp(72px, 9vw, 96px);
+  height: auto;
+  stroke: none;
+}
+.ab-stamp .rot {
+  transform-origin: 60px 60px;
+  animation: abSpin2 18s linear infinite paused;
+}
+.ab.live .ab-stamp .rot {
+  animation-play-state: running;
+}
+@keyframes abSpin2 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.ab-stamp text {
+  font: 700 9.5px var(--f-d, Poppins, sans-serif);
+  fill: #fff;
+}
+.ab-pills {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.ab-pills span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--a-ink);
+  font: 700 0.78rem var(--f-d);
+  box-shadow: 0 12px 22px -12px rgba(60, 0, 0, 0.7);
+}
+.ab-pills i {
+  font-style: normal;
+}
+
+.ab-plates {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.ab-pl {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 26px;
+  padding: 14px 10px 12px;
+  text-align: center;
+  background: linear-gradient(180deg, #fff, var(--a-cream));
+  border: 1px solid var(--a-line);
+  transition:
+    transform 0.6s var(--a-e),
+    box-shadow 0.5s,
+    border-color 0.3s;
+}
+.ab-pl img {
+  display: block;
+  width: 78%;
+  margin: 0 auto 6px;
+  aspect-ratio: 1;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 14px rgba(90, 20, 10, 0.28));
+  transition: transform 0.8s var(--a-e);
+  animation: abBob 5s ease-in-out infinite paused;
+}
+.ab.live .ab-pl img {
+  animation-play-state: running;
+}
+.ab-pl:nth-child(2) img {
+  animation-delay: -1.6s;
+}
+.ab-pl:nth-child(3) img {
+  animation-delay: -3.2s;
+}
+@keyframes abBob {
+  50% {
+    translate: 0 -6px;
+  }
+}
+.ab-pl figcaption {
+  font: 700 0.82rem var(--f-d);
+  color: var(--a-ink);
+}
+.ab-pl:hover {
+  transform: translateY(-6px);
+  border-color: #e9a9a6;
+  box-shadow: 0 26px 36px -26px rgba(195, 9, 17, 0.6);
+}
+.ab-pl:hover img {
+  transform: rotate(14deg) scale(1.08);
+}
+
+/* ---------- Kanan: teks ---------- */
+.ab-txt {
+  min-width: 0;
+}
+.ab-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  font: 700 0.78rem var(--f-d);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--a-red);
+}
+.ab-eyebrow:before {
+  content: "";
+  width: 46px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--a-red);
+  transform-origin: left;
+  animation: none;
+}
+.ab-title {
+  margin: 0 0 22px;
+  font: 800 clamp(2.1rem, 3.8vw, 3.4rem) / 1.06 var(--f-d);
+  letter-spacing: -0.05em;
+  color: var(--a-ink);
+}
+.ab-l {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.ab-l > span {
+  display: block;
+}
+.ab-title em {
+  font-family: Lora, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--a-red);
+  position: relative;
+  display: inline-block;
+}
+.ab-title em:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.02em;
+  height: 0.09em;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--a-red), #ff8a1f);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.1s var(--a-e) 1.3s;
+}
+.ab.in .ab-title em:after {
+  transform: none;
+}
+.ab-txt p {
+  margin: 0 0 14px;
+  max-width: 58ch;
+  line-height: 1.85;
+  color: var(--a-mut);
+  font-size: 1rem;
+}
+.ab-txt mark {
+  color: var(--a-ink);
+  font-weight: 600;
+  background: linear-gradient(transparent 62%, rgba(255, 138, 31, 0.38) 62%) no-repeat 0 0/0 100%;
+  transition: background-size 1s var(--a-e) 1.1s;
+  padding: 0 2px;
+}
+.ab.in mark {
+  background-size: 100% 100%;
+}
+
+.ab-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 26px 0 28px;
+}
+.ab-st {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  padding: 18px 18px 16px;
+  background: #fff;
+  border: 1px solid var(--a-line);
+  transition:
+    transform 0.5s var(--a-e),
+    box-shadow 0.4s;
+}
+.ab-st:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--a-red), #ff8a1f);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s var(--a-e) 0.9s;
+}
+.ab.in .ab-st:before {
+  transform: none;
+}
+.ab-st b {
+  display: block;
+  font: 800 clamp(1.9rem, 3.2vw, 2.6rem) / 1 var(--f-d);
+  letter-spacing: -0.05em;
+  color: var(--a-red);
+}
+.ab-st i {
+  font-style: normal;
+}
+.ab-st span {
+  display: block;
+  margin-top: 6px;
+  font: 600 0.82rem var(--f-d);
+  color: var(--a-mut);
+}
+.ab-st:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 34px -24px rgba(195, 9, 17, 0.55);
+}
+
+.ab-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.ab-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border-radius: 100px;
+  font: 700 0.95rem var(--f-d);
+  transition:
+    transform 0.5s var(--a-e),
+    box-shadow 0.4s,
+    background 0.3s,
+    color 0.3s;
+}
+.ab-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.5s var(--a-e);
+}
+.ab-btn-r {
+  background: linear-gradient(135deg, var(--a-red2), var(--a-deep));
+  color: #fff;
+  box-shadow: 0 18px 30px -16px rgba(195, 9, 17, 0.9);
+}
+.ab-btn-r:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  animation: abShine 4.5s ease-in-out infinite paused;
+}
+.ab.live .ab-btn-r:after {
+  animation-play-state: running;
+}
+@keyframes abShine {
+  0%,
+  60% {
+    left: -60%;
+  }
+  100% {
+    left: 130%;
+  }
+}
+.ab-btn-r:hover {
+  transform: translateY(-3px);
+}
+.ab-btn-r:hover svg {
+  transform: translateX(5px);
+}
+.ab-btn-g {
+  color: var(--a-red);
+  box-shadow: inset 0 0 0 2px var(--a-red);
+}
+.ab-btn-g:hover {
+  background: var(--a-red);
+  color: #fff;
+  transform: translateY(-3px);
+}
+.ab-btn:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Animasi masuk ---------- */
+.ab.js .ab-main {
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  transition:
+    opacity 0.8s,
+    transform 1.2s var(--a-e);
+}
+.ab.js.in .ab-main {
+  opacity: 1;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+}
+.ab.js .ab-logo {
+  scale: 0.7;
+  opacity: 0;
+  transition:
+    scale 1.2s var(--a-e) 0.35s,
+    opacity 0.8s 0.35s;
+}
+.ab.js.in .ab-logo {
+  scale: 1;
+  opacity: 1;
+}
+.ab.js .ab-pills span,
+.ab.js .ab-stamp {
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+  transition:
+    opacity 0.6s,
+    transform 0.9s var(--a-e);
+  transition-delay: calc(0.9s + var(--i, 0) * 0.12s);
+}
+.ab.js.in .ab-pills span,
+.ab.js.in .ab-stamp {
+  opacity: 1;
+  transform: none;
+}
+.ab.js .ab-pl {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.7s,
+    transform 1s var(--a-e),
+    box-shadow 0.5s,
+    border-color 0.3s;
+  transition-delay: calc(0.55s + var(--i, 0) * 0.13s), calc(0.55s + var(--i, 0) * 0.13s), 0s, 0s;
+}
+.ab.js.in .ab-pl {
+  opacity: 1;
+  transform: none;
+}
+.ab.js.in .ab-pl:hover {
+  transform: translateY(-6px);
+  transition-delay: 0s;
+}
+.ab.js .ab-l > span {
+  transform: translateY(112%);
+  transition: transform 1s var(--a-e);
+  transition-delay: calc(0.15s + var(--i, 0) * 0.1s);
+}
+.ab.js.in .ab-l > span {
+  transform: none;
+}
+.ab.js .ab-r {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s,
+    transform 0.9s var(--a-e);
+  transition-delay: calc(0.1s + var(--i, 0) * 0.09s);
+}
+.ab.js.in .ab-r {
+  opacity: 1;
+  transform: none;
+}
+.ab.js.in .ab-st:hover {
+  transform: translateY(-5px);
+  transition-delay: 0s;
+}
+.ab.done * {
+  transition-delay: 0s !important;
+}
+
+/* ---------- Responsif ---------- */
+@media (max-width: 900px) {
+  .ab {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .ab-vis {
+    max-width: 540px;
+    margin-inline: auto;
+    width: 100%;
+  }
+  .ab-txt {
+    text-align: left;
+  }
+}
+@media (max-width: 520px) {
+  .ab-main {
+    border-radius: 30px;
+    aspect-ratio: 1/1.12;
+  }
+  .ab-logo {
+    width: 60%;
+    margin-top: -16%;
+  }
+  .ab-orbit {
+    width: 76%;
+    top: 40%;
+  }
+  .ab-glow {
+    top: 40%;
+  }
+  .ab-pills span {
+    font-size: 0.72rem;
+    padding: 8px 11px;
+  }
+  .ab-plates {
+    gap: 10px;
+  }
+  .ab-pl {
+    border-radius: 20px;
+    padding: 10px 6px 10px;
+  }
+  .ab-pl figcaption {
+    font-size: 0.72rem;
+  }
+  .ab-stats {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  .ab-st {
+    padding: 14px 12px;
+    border-radius: 18px;
+  }
+  .ab-st span {
+    font-size: 0.7rem;
+  }
+  .ab-btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}
+@media (hover: none) {
+  .ab-pl:hover,
+  .ab-st:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .ab-pl:hover img {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ab *,
+  .ab *:before,
+  .ab *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .ab.js .ab-main,
+  .ab.js .ab-logo,
+  .ab.js .ab-pills span,
+  .ab.js .ab-stamp,
+  .ab.js .ab-pl,
+  .ab.js .ab-l > span,
+  .ab.js .ab-r {
+    opacity: 1 !important;
+    transform: none !important;
+    scale: 1 !important;
+  }
+  .ab-title em:after,
+  .ab-st:before {
+    transform: none !important;
+  }
+  .ab mark {
+    background-size: 100% 100% !important;
+  }
+}

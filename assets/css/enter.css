@@ -1,0 +1,114 @@
+/* enter */
+@media (prefers-reduced-motion: no-preference) {
+  body.ready .hero-stage {
+    animation: enStage 2.1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  body.ready .hero-giant-wrap {
+    animation: enGiant 1.9s cubic-bezier(0.16, 1, 0.3, 1) 0.05s backwards;
+  }
+  body.ready .hero-kicker {
+    animation: enDrop 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards;
+  }
+  body.ready .hero-orbit {
+    animation: enOrbit 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+  }
+  body.ready .fresh-stamp {
+    animation: enStamp 1.5s cubic-bezier(0.34, 1.4, 0.5, 1) 1s backwards;
+  }
+  body.ready .hero-arrow {
+    animation: enFade 1s ease 1s backwards;
+  }
+  body.ready .hero-price {
+    animation: enRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s backwards;
+  }
+  body.ready .hero-meta {
+    animation: enRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) 1.05s backwards;
+  }
+  body.ready .hero-scroll {
+    animation: enRise 1.1s cubic-bezier(0.16, 1, 0.3, 1) 1.25s backwards;
+  }
+  body.ready .nx-dock {
+    animation-delay: 0.35s;
+  }
+}
+@keyframes enStage {
+  0% {
+    scale: 1.22;
+    opacity: 0;
+    filter: blur(12px);
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes enGiant {
+  0% {
+    scale: 0.86;
+    opacity: 0;
+    filter: blur(14px);
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes enDrop {
+  0% {
+    translate: 0 -18px;
+    opacity: 0;
+    filter: blur(6px);
+  }
+  100% {
+    translate: 0 0;
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes enRise {
+  0% {
+    translate: 0 26px;
+    opacity: 0;
+    filter: blur(6px);
+  }
+  100% {
+    translate: 0 0;
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes enFade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes enOrbit {
+  0% {
+    scale: 0.55;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
+@keyframes enStamp {
+  0% {
+    scale: 0.3;
+    rotate: -140deg;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    rotate: 0deg;
+    opacity: 1;
+  }
+}

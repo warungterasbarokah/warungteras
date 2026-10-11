@@ -1,0 +1,226 @@
+/* menu preview */
+.mn-pv {
+  overflow: hidden;
+  height: clamp(230px, 40dvh, 360px);
+  padding: 0;
+  isolation: isolate;
+}
+.mn-pv:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(46% 52% at 50% 46%, rgba(255, 170, 70, 0.3), transparent 70%),
+    radial-gradient(90% 60% at 50% 100%, rgba(0, 0, 0, 0.45), transparent 70%);
+}
+.mn-prod {
+  position: absolute;
+  inset: 20px 18px 34px;
+  width: auto;
+  height: auto;
+  max-width: none;
+  aspect-ratio: auto;
+  display: block;
+}
+.mn-prod > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 20px rgba(0, 0, 0, 0.55));
+}
+.mn-bubble {
+  bottom: 12px;
+  left: 12px;
+}
+@media (min-width: 900px) {
+  .mn-pv {
+    height: auto;
+  }
+  .mn-prod {
+    inset: 7% 7% 11%;
+    width: auto;
+  }
+}
+@media (max-height: 560px) and (max-width: 899px) {
+  .mn-pv {
+    height: clamp(150px, 32dvh, 220px);
+  }
+  .mn-prod {
+    inset: 12px 12px 26px;
+  }
+}
+/* kartu varian: 2 pilihan besar dengan keterangan */
+.mn-vars {
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.mn-var {
+  position: relative;
+  min-height: 104px;
+  padding: 14px;
+  gap: 4px;
+  justify-content: space-between;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #241818, #181010);
+  transition:
+    border-color 0.25s,
+    background-color 0.25s,
+    transform 0.2s;
+}
+.mn-var:active {
+  transform: scale(0.97);
+}
+.mn-var b {
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+.mn-var small {
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: #b9a8a4;
+  font-weight: 500;
+}
+.mn-var span {
+  margin-top: auto;
+  font-size: 0.95rem;
+}
+.mn-var.on {
+  background: linear-gradient(160deg, #4a0b0e, #2a0709);
+  box-shadow: 0 10px 26px -14px #ff2a1d;
+}
+.mn-var.on:after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ff4b3e center/10px no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E");
+}
+@media (max-width: 340px) {
+  .mn-vars {
+    grid-template-columns: 1fr;
+  }
+}
+/* pilihan rasa (Tela-Tela) */
+.mn-flvs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.mn-flv {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  min-height: 96px;
+  padding: 14px;
+  border-radius: 18px;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  background: linear-gradient(160deg, #241818, #181010);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  font-family: inherit;
+  transition:
+    border-color 0.25s,
+    background-color 0.25s,
+    transform 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.mn-flv i {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  margin-bottom: 6px;
+  background: radial-gradient(circle at 35% 30%, #fff9, transparent 45%), var(--fc);
+  box-shadow: 0 6px 14px -6px var(--fc);
+}
+.mn-flv b {
+  font-size: 0.95rem;
+}
+.mn-flv small {
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: #b9a8a4;
+}
+.mn-flv:active {
+  transform: scale(0.97);
+}
+.mn-flv.on {
+  border-color: var(--fc);
+  background: linear-gradient(160deg, #2f1410, #1c0d0b);
+  box-shadow: 0 10px 26px -14px var(--fc);
+}
+.mn-flv.on:after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--fc) center/10px no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E");
+}
+@media (max-width: 340px) {
+  .mn-flvs {
+    grid-template-columns: 1fr;
+  }
+}
+/* nominal bebas (Tela-Tela) */
+.mn-nom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 68px;
+  padding: 0 18px;
+  border-radius: 20px;
+  background: linear-gradient(160deg, #241818, #181010);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+.mn-nom:focus-within {
+  border-color: #ffc83d;
+  box-shadow: 0 0 0 4px rgba(255, 200, 61, 0.16);
+}
+.mn-nom span {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #ffc83d;
+}
+.mn-nom input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  background: none;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  font: 800 1.7rem/1 inherit;
+  font-family: inherit;
+  letter-spacing: -0.02em;
+}
+.mn-nom input::placeholder {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #7d6b68;
+  letter-spacing: 0;
+}
+.mn-nomh {
+  margin: 9px 2px 0;
+  font-size: 0.8rem;
+  color: #b9a8a4;
+}
+.mn-nomh.bad {
+  color: #ff8a80;
+  font-weight: 700;
+}
